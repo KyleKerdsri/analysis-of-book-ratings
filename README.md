@@ -17,7 +17,7 @@ Can user rating behavior be used to identify meaningful reader segments, and how
 
 Tested k = [2, 4, 8, 16, 32, 64, 128] and selected k=32 using the elbow method on inertia:
 
-![Elbow plot for k-means clustering](main_things/plots/elbow_plot.png)
+![Elbow plot for k-means clustering](work/plots/elbow_plot.png)
 
 Clusters captured recognizable reading segments — Harry Potter/fantasy readers, commercial thriller readers (Grisham, Patterson, Evanovich), classic literature readers — but were highly imbalanced: one cluster held **7,282 of ~11,800 users (~70%)**, while several others had fewer than 10.
 
@@ -25,8 +25,8 @@ Clusters captured recognizable reading segments — Harry Potter/fantasy readers
 
 Reduced the (mean-centered, transposed) matrix to 2 components for visualization, then computed cumulative explained variance across all components to find the data's true dimensionality:
 
-![PCA of books, 2 components](main_things/plots/pca_books_plot.png)
-![PCA cumulative variance explained](main_things/plots/pca_variance_explained.png)
+![PCA of books, 2 components](work/plots/pca_books_plot.png)
+![PCA cumulative variance explained](work/plots/pca_variance_explained.png)
 
 2D PCA captured only **5.28% of total variance**; reaching 80% cumulative variance required **122 components** — confirming that reading preferences are high-dimensional and don't collapse neatly into 2 axes.
 
@@ -34,9 +34,9 @@ Reduced the (mean-centered, transposed) matrix to 2 components for visualization
 
 Applied Truncated SVD at multiple component counts and compared explained variance retention against the PCA and clustering results:
 
-![SVD singular values](main_things/plots/svd_singular_values.png)
-![SVD explained variance vs number of components](main_things/plots/svd_explained_variance.png)
-![SVD projection colored by k-means cluster](main_things/plots/svd_clusters_plot.png)
+![SVD singular values](work/plots/svd_singular_values.png)
+![SVD explained variance vs number of components](work/plots/svd_explained_variance.png)
+![SVD projection colored by k-means cluster](work/plots/svd_clusters_plot.png)
 
 SVD at k=128 retained **83.06%** of variance, consistent with the PCA findings. Projecting the 32 k-means clusters into 2D SVD space shows heavy overlap — the cluster separations exist in dimensions beyond what a 2D plot can show, not because the clustering itself failed.
 
