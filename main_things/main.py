@@ -56,14 +56,14 @@ print(f"Rows (users): {ratings_matrix.shape[0]}")
 print(f"Columns (books): {ratings_matrix.shape[1]}")
 
 most_rated_books = filtered_ratings.groupby('ISBN').size().sort_values(ascending=False)
-#print(most_rated_books)
+print(most_rated_books)
 #Top 3 most rated books
 #1) 0971880107, Wild Animus, 1686 ratings
 #2) 0316666343, The Lovely Bones, 981 ratings
 #3) 0385504209, The Da Vinci Code, 722 ratings
 
 most_rating_users = filtered_ratings.groupby('User-ID').size().sort_values(ascending=False)
-#print(most_rating_users.head(3))
+print(most_rating_users.head(3))
 #Top 3 users with the most ratings
 #1) 11673, 193 ratings
 #2) 35859, 121 ratings
@@ -90,8 +90,8 @@ plt.title('Elbow Method: Inertia vs Number of Clusters', fontsize=14)
 plt.grid(True, alpha=0.3)
 plt.xticks(k_values)
 plt.tight_layout()
-#plt.savefig('elbow_plot.png', dpi=300, bbox_inches='tight') # save to png
-#plt.show()
+plt.savefig('plots/elbow_plot.png', dpi=300, bbox_inches='tight') # save to png
+plt.show()
 
 # (b) Choose optimal k
 print("ANALYSIS: Choosing the optimal k")
@@ -301,7 +301,7 @@ plt.title('PCA of Books (k=2) - Colored by Dominant User Nationality', fontsize=
 plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=9)
 plt.grid(True, alpha=0.3)
 plt.tight_layout()
-plt.savefig('pca_books_plot.png', dpi=300, bbox_inches='tight')
+plt.savefig('plots/pca_books_plot.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 # USA is the most dominant Country that has rated all of these books, so this PCA analysis does not tell us much.
@@ -341,7 +341,7 @@ plt.title('PCA: Cumulative Variance Explained', fontsize=14)
 plt.legend(fontsize=10)
 plt.grid(True, alpha=0.3)
 plt.tight_layout()
-plt.savefig('pca_variance_explained.png', dpi=300, bbox_inches='tight')
+plt.savefig('plots/pca_variance_explained.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 
@@ -390,7 +390,7 @@ plt.ylabel('Singular Value', fontsize=12)
 plt.title('Singular Values (k=128)', fontsize=14)
 plt.grid(True, alpha=0.3)
 plt.tight_layout()
-plt.savefig('svd_singular_values.png', dpi=300, bbox_inches='tight')
+plt.savefig('plots/svd_singular_values.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 # Show first 10 singular values
@@ -426,7 +426,7 @@ plt.title('SVD: Explained Variance vs Number of Components', fontsize=14)
 plt.grid(True, alpha=0.3)
 plt.xticks(k_list)
 plt.tight_layout()
-plt.savefig('svd_explained_variance.png', dpi=300, bbox_inches='tight')
+plt.savefig('plots/svd_explained_variance.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 # (c) Apply SVD with k=2 and transform the data
@@ -486,7 +486,7 @@ plt.title('SVD Projection (k=2) - Colored by K-Means Cluster', fontsize=14)
 plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=9, ncol=2)
 plt.grid(True, alpha=0.3)
 plt.tight_layout()
-plt.savefig('svd_clusters_plot.png', dpi=300, bbox_inches='tight')
+plt.savefig('plots/svd_clusters_plot.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 # Save SVD results
